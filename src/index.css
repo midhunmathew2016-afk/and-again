@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+/* Small helper to make the Swiper full height inside the hero */
+.swiper, .swiper-slide {
+  height: 100%;
+}
+
+/* Typography */
+body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial }
+.font-serif { font-family: 'Playfair Display', Georgia, serif }
+
+/* Cookie bar limits */
+.cookie-bar-hidden { display: none }
+
