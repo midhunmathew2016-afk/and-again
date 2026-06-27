@@ -1,45 +1,160 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import Hero from './components/Hero'
 import Header from './components/Header'
+import CategoryNav from './components/CategoryNav'
 import ProductGallery from './components/ProductGallery'
 import ProductDetail from './components/ProductDetail'
 import CartPage from './components/CartPage'
 import CheckoutPage from './components/CheckoutPage'
 import ConfirmationPage from './components/ConfirmationPage'
 
-const categories = ['All products', 'Used furniture', 'New furniture', 'Accessories', 'Wall decor']
+import img01 from './assets/01.png'
+import img02 from './assets/AVSDE5483.JPG'
+import img03 from './assets/BFMNE4246.JPG'
+import img04 from './assets/BTXE8099.PNG'
+import img06 from './assets/CSDY5866[1].PNG'
+import img07 from './assets/DNIO3131.PNG'
+import img09 from './assets/EYPJE2333[1].JPG'
+import img11 from './assets/HREFE9714[1].JPG'
+import img12 from './assets/IMG_0298.jpeg'
+import img14 from './assets/UYDH8932[1].PNG'
+import img15 from './assets/XDNY5353.PNG'
+import p1 from './assets/p1.jpeg'
+import p1a from './assets/p1a.jpeg'
+import p02 from './assets/p02.jpeg'
+import p02a from './assets/p02.a.jpeg'
+import p03 from './assets/p03.jpeg'
+import p03a from './assets/p03a.jpeg'
+import p04 from './assets/p04.PNG'
+import p04a from './assets/p04a.jpeg'
+import p04b from './assets/p04b.jpeg'
+import p05 from './assets/p05.jpeg'
+import p006 from './assets/p006.jpeg'
+import pdghe5082 from './assets/PDGHE5082.JPG'
+import p06 from './assets/p06.jpeg'
+import p06a from './assets/p06a.jpeg'
+import p07 from './assets/p07.jpeg'
+import p07a from './assets/p07a.JPG'
+import p08 from './assets/p08.jpeg'
+import p09 from './assets/p09.jpeg'
+import syhr5358 from './assets/SYHR5358.PNG'
+import bronzeImage from './assets/28536596-af75-49a9-a8f7-5203c29b63ee.jpeg'
+import hodmeImage from './assets/HODME1571[1].JPG'
+import kasera1 from './assets/32fb18b0-5929-4d0c-90a5-6cc347b9b9e5.jpeg'
+import kasera2 from './assets/68fe573d-975b-4efd-b668-e6203b72ede3.jpeg'
+import kasera3 from './assets/5db78747-16b1-436d-9ace-5158982d2e44.jpeg'
+
+const categories = ['All products', 'Restored furniture', 'New furniture', 'Wall decor', 'Artifacts']
 const products = [
+ 
+
   {
-    title: 'Curated lounge chair',
-    description: 'A sculptural statement chair with warm wood details and tactile upholstery.',
-    category: 'Used furniture',
-    vendor: 'The Edit',
-    price: 395000,
-    img: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&q=80'
+    title: 'Raffles',
+    description: 'Restored Classic raffles chair in teak wood and leather upholstery.',
+    category: 'Restored furniture',
+    vendor: 'And Again',
+    price: 45000,
+    img: img01,
+    images: [img01, p1, p1a]
   },
   {
-    title: 'Textured ceramic vase',
-    description: 'Hand-finished accessories designed to layer with everyday objects.',
-    category: 'Accessories',
-    vendor: 'The Edit',
-    price: 15250,
-    img: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=1200&q=80'
-  },
-  {
-    title: 'Modern oak sideboard',
-    description: 'Clean-lined storage with a softly rounded silhouette for living rooms.',
-    category: 'New furniture',
-    vendor: 'The Edit',
-    price: 171000,
-    img: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80'
-  },
-  {
-    title: 'Gallery wall styling',
-    description: 'Complete wall decor sets for layered, atmospheric interiors.',
+    title: 'Irit',
+    description: 'An antique Israeli framed artwork showcasing a delicate bouquet of pressed, dried flowers on handmade paper, enclosed in a rustic, vine-textured border frame.',
     category: 'Wall decor',
-    vendor: 'The Edit',
-    price: 49600,
-    img: 'https://images.unsplash.com/photo-1494526585095-c41746248156?w=1200&q=80'
+    vendor: 'And Again',
+    price: 15000,
+    img: p006,
+    images: [p006, p06, p06a]
+  },
+  {
+    title: 'Indigo',
+    description: 'An antique ceramic baluster vase featuring intricate blue-and-white floral arabesque patterns and formal geometric borders on an aged cream background.',
+    category: 'Artifacts',
+    vendor: 'And Again',
+    price: 31000,
+    img: img03,
+    images: [img03, p08]
+  },
+  {
+    title: 'Chanda',
+    description: 'A round antique teak chest with three curved drawers, brass knobs, and tall cabriole legs.',
+    category: 'New furniture',
+    vendor: 'And Again',
+    price: 22000,
+    img: img04,
+    images: [img04, p05]
+  },
+  {
+    title: 'Flora',
+    description: 'Beautiful rosewood rocking chair with smooth curves and intricate floral carvings.',
+    category: 'Restored furniture',
+    vendor: 'And Again',
+    price: 51500,
+    img: img06,
+    images: [img06, p02, p02a]
+  },
+  {
+    title: 'Koi',
+    description: 'White porcelain baluster vase beautifully hand-painted with fluidly swimming red and black koi fish amidst delicate aquatic flora.',
+    category: 'Artifacts',
+    vendor: 'And Again',
+    price: 24000,
+    img: img07,
+    images: [img07, bronzeImage]
+  },
+  {
+    title: 'Rib',
+    description: 'A striking dark-finished wooden vase intricately hand-carved with uniform, horizontal ribbed grooves across its tapered, ovular body.',
+    category: 'Artifacts',
+    vendor: 'And Again',
+    price: 9000,
+    img: img09,
+    images: [img09, p09]
+  },
+  {
+    title: 'Orchids',
+    description: 'An antique botanical print depicting a pair of elegant slipper orchids, beautifully presented within a wide, age-toned mat and a weathered frame.',
+    category: 'Wall decor',
+    vendor: 'And Again',
+    price: 12000,
+    img: p07a,
+    images: [p07a, p07]
+  },
+  {
+    title: 'Takhna',
+    description: 'An antique teak centre table featuring a naturally distressed top, a single functional drawer, and distinctively carved cabriole legs.',
+    category: 'Restored furniture',
+    vendor: 'And Again',
+    price: 17000,
+    img: img12,
+    images: [img12, p03, p03a]
+  },
+  {
+    title: 'Malabar',
+    description: 'Antique teak armchair featuring a slatted backrest, gently curved armrests, and intricately turned front legs with a richly grained, weathered finish.',
+    category: 'Restored furniture',
+    vendor: 'And Again',
+    price: 22000,
+    img: pdghe5082,
+    images: [pdghe5082, p04a, p04b]
+  },
+  {
+    title: 'Kasera',
+    description: 'A vintage rosewood side chair featuring a tightly woven rattan seat and backrest, accented by classically turned legs and upright finials.',
+    category: 'Restored furniture',
+    vendor: 'And Again',
+    price: 19000,
+    img: hodmeImage,
+    images: [hodmeImage, kasera1, kasera2, kasera3]
+  },
+  {
+    title: 'Blossom',
+    description: 'A vintage hand-painted ceramic wall plate featuring a vibrant wreath of crimson flowers, rich green foliage, and delicate blue berry accents.',
+    category: 'Wall decor',
+    vendor: 'And Again',
+    price: 9500,
+    img: img15,
+    images: [img15, syhr5358]
   }
 ]
 
@@ -80,15 +195,37 @@ export default function App() {
     window.location.hash = path
   }
 
+  useEffect(() => {
+    const sections = [{ category: 'All products', id: 'all-products-section' }, ...categories.map((category) => ({
+      category,
+      id: category.toLowerCase().replace(/\s+/g, '-')
+    }))]
+
+    const handleScroll = () => {
+      const offset = 180
+      const activeSection = [...sections]
+        .reverse()
+        .find((section) => {
+          const element = document.getElementById(section.id)
+          return element?.getBoundingClientRect().top <= offset
+        })
+
+      if (activeSection && activeSection.category !== selectedCategory) {
+        setSelectedCategory(activeSection.category)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [selectedCategory])
+
   const filteredProducts = useMemo(() => {
     const query = searchQuery.toLowerCase()
-    return products.filter((product) => {
-      const matchesCategory = selectedCategory === 'All products' || product.category === selectedCategory
-      const matchesSearch =
-        product.title.toLowerCase().includes(query) || product.description.toLowerCase().includes(query)
-      return matchesCategory && matchesSearch
-    })
-  }, [selectedCategory, searchQuery])
+    return products.filter((product) =>
+      product.title.toLowerCase().includes(query) || product.description.toLowerCase().includes(query)
+    )
+  }, [searchQuery])
 
   const cartQuantity = cart.reduce((total, item) => total + item.quantity, 0)
   const cartTotal = cart.reduce((total, item) => total + item.product.price * item.quantity, 0)
@@ -122,6 +259,12 @@ export default function App() {
     navigate('/checkout')
   }
 
+  const scrollToCategory = (category) => {
+    const id = category === 'All products' ? 'all-products-section' : category.toLowerCase().replace(/\s+/g, '-')
+    const target = document.getElementById(id)
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   const handleCheckoutSubmit = (event) => {
     event.preventDefault()
     navigate('/confirmation')
@@ -152,17 +295,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
-      <Header
-        cartQuantity={cartQuantity}
-        onCartClick={() => navigate('/cart')}
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onCategorySelect={(category) => {
-          setSelectedCategory(category)
-          const productsSection = document.getElementById('products-section')
-          productsSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }}
-      />
+      <Header cartQuantity={cartQuantity} onCartClick={() => navigate('/cart')} />
+
+      {activeRoute === '/' && (
+        <CategoryNav
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onSelect={(category) => {
+            setSelectedCategory(category)
+            scrollToCategory(category)
+          }}
+        />
+      )}
 
       <main>
         <Hero />
@@ -180,12 +324,6 @@ export default function App() {
           <ProductGallery
             products={filteredProducts}
             categories={categories}
-            selectedCategory={selectedCategory}
-            onCategoryChange={(category) => {
-              setSelectedCategory(category)
-              const productsSection = document.getElementById('products-section')
-              productsSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            }}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             onProductClick={handleProductClick}

@@ -1,10 +1,10 @@
 import ProductCard from './ProductCard'
 
+const sectionId = (category) => category.toLowerCase().replace(/\s+/g, '-')
+
 export default function ProductGallery({
   products,
   categories,
-  selectedCategory,
-  onCategoryChange,
   searchQuery,
   setSearchQuery,
   onProductClick,
@@ -12,10 +12,19 @@ export default function ProductGallery({
   onViewCart,
   cartQuantity
 }) {
+  const categoryGroups = categories
+    .filter((category) => category !== 'All products')
+    .map((category) => ({
+      category,
+      items: products.filter(
+        (product) => product.category === category
+      )
+    }))
+
   return (
     <section className="bg-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-end">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="w-full md:w-96">
             <label htmlFor="product-search" className="sr-only">Search products</label>
             <div className="relative">
@@ -34,40 +43,56 @@ export default function ProductGallery({
               />
             </div>
           </div>
+          <button
+            type="button"
+            onClick={onViewCart}
+            className="ml-auto inline-flex items-center rounded-full border border-gray-300 bg-white px-5 py-2 text-sm font-medium text-gray-800 transition hover:border-black hover:text-black"
+          >
+            Cart ({cartQuantity})
+          </button>
         </div>
       </div>
-      <section id="products-section" className="bg-white py-16">
+
+      <section id="all-products-section" className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-10">
             <div>
               <h3 className="text-2xl font-serif">Products</h3>
               <p className="mt-2 text-sm text-gray-500">Showing {products.length} products</p>
             </div>
-            <button
-              type="button"
-              onClick={onViewCart}
-              className="rounded-full border border-gray-300 px-5 py-2 text-sm font-medium text-gray-800 transition hover:border-black hover:text-black"
-            >
-              Cart ({cartQuantity})
-            </button>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {products.length > 0 ? (
-              products.map((product, index) => (
-                <ProductCard
-                  key={index}
-                  product={product}
-                  formatPrice={(value) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value)}
-                  onClick={onProductClick}
-                  onAddToCart={onAddToCart}
-                />
-              ))
-            ) : (
-              <div className="col-span-full rounded-[1.5rem] border border-dashed border-gray-300 bg-slate-50 p-12 text-center text-gray-500">
-                No products match your search.
-              </div>
-            )}
+          <div className="space-y-16">
+            {categoryGroups.map(({ category, items }) => (
+              <section key={category} id={sectionId(category)} className="scroll-mt-28">
+                <div className="flex items-center justify-between border-b border-gray-200 pb-4">
+                  <div>
+                    <h4 className="text-xl font-semibold uppercase tracking-[0.18em] text-gray-900">{category}</h4>
+                    <p className="mt-2 text-sm text-gray-500">{items.length} item{items.length === 1 ? '' : 's'}</p>
+                  </div>
+                </div>
+
+                {items.length > 0 ? (
+                  <div className="mt-6 flex justify-center">
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl w-full">
+                      {items.map((product, index) => (
+                        <ProductCard
+                          key={index}
+                          product={product}
+                          formatPrice={(value) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value)}
+                          onClick={onProductClick}
+                          onAddToCart={onAddToCart}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mt-8 rounded-[1.5rem] border border-dashed border-gray-300 bg-slate-50 p-12 text-center text-gray-500">
+                    No products match your search in this category.
+                  </div>
+                )}
+              </section>
+            ))}
           </div>
         </div>
       </section>
