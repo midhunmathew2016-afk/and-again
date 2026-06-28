@@ -302,6 +302,19 @@ export default function App() {
     target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category)
+    navigate('/')
+    window.setTimeout(() => scrollToCategory(category), 120)
+  }
+
+  const handleLogoClick = () => {
+    setSelectedCategory('All products')
+    setSearchQuery('')
+    navigate('/')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   const handleCheckoutSubmit = (event) => {
     event.preventDefault()
     navigate('/confirmation')
@@ -339,6 +352,9 @@ export default function App() {
         onSearchClick={handleHeaderSearch}
         onContactClick={() => navigate('/contact')}
         onWishlistClick={() => navigate('/wishlist')}
+        categories={categories}
+        onCategorySelect={handleCategorySelect}
+        onLogoClick={handleLogoClick}
       />
 
       {activeRoute === '/' && (
@@ -405,9 +421,6 @@ export default function App() {
 
         {activeRoute === '/checkout' && (
           <CheckoutPage
-            checkoutData={checkoutData}
-            onChange={handleCheckoutChange}
-            onSubmit={handleCheckoutSubmit}
             cartQuantity={cartQuantity}
             cartTotal={cartTotal}
             onBack={() => navigate('/cart')}
@@ -435,6 +448,10 @@ export default function App() {
             wishlist={wishlist}
             onOpenProduct={handleProductClick}
             onRemoveFromWishlist={handleToggleWishlist}
+            onAddToCart={(product) => {
+              handleAddToCart(product)
+              navigate('/cart')
+            }}
             onContinueShopping={() => navigate('/')}
             formatPrice={formatPrice}
           />

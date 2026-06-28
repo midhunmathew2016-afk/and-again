@@ -10,14 +10,14 @@ export default function ContactPage({ onBack }) {
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl border border-gray-200 bg-white p-5">
               <p className="text-xs uppercase tracking-[0.15em] text-gray-500">Email</p>
-              <a href="mailto:hello@andagain.in" className="mt-2 block text-lg font-semibold text-gray-900 hover:text-black">
-                hello@andagain.in
+              <a href="mailto:andagain.in@gmail.com" className="mt-2 block text-lg font-semibold text-gray-900 hover:text-black">
+                andagain.in@gmail.com
               </a>
             </div>
             <div className="rounded-2xl border border-gray-200 bg-white p-5">
               <p className="text-xs uppercase tracking-[0.15em] text-gray-500">Phone</p>
-              <a href="tel:+919876543210" className="mt-2 block text-lg font-semibold text-gray-900 hover:text-black">
-                +91 98765 43210
+              <a href="tel:+919048610091" className="mt-2 block text-lg font-semibold text-gray-900 hover:text-black">
+                +91 9048610091
               </a>
             </div>
           </div>

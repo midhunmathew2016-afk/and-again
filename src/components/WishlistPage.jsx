@@ -1,5 +1,5 @@
 
-export default function WishlistPage({ wishlist, onOpenProduct, onRemoveFromWishlist, onContinueShopping, formatPrice }) {
+export default function WishlistPage({ wishlist, onOpenProduct, onRemoveFromWishlist, onAddToCart, onContinueShopping, formatPrice }) {
   return (
     <section className="bg-white py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -26,7 +26,14 @@ export default function WishlistPage({ wishlist, onOpenProduct, onRemoveFromWish
                   </div>
                 </button>
 
-                <div className="px-5 pb-5">
+                <div className="px-5 pb-5 space-y-3">
+                  <button
+                    type="button"
+                    onClick={() => onAddToCart(product)}
+                    className="w-full rounded-full bg-black px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-900"
+                  >
+                    Add to cart
+                  </button>
                   <button
                     type="button"
                     onClick={() => onRemoveFromWishlist(product)}

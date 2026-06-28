@@ -25,8 +25,8 @@ export default function ProductGallery({
     }))
 
   return (
-    <section className="bg-white py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-6 sm:py-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="w-full md:w-96">
             <label htmlFor="product-search" className="sr-only">Search products</label>
@@ -42,8 +42,18 @@ export default function ProductGallery({
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder="Search products..."
-                className="w-full rounded-full border border-gray-300 bg-white py-3 pl-11 pr-4 text-sm text-gray-800 outline-none transition focus:border-black focus:ring-2 focus:ring-black/10"
+                className="w-full rounded-full border border-gray-300 bg-white py-3 pl-11 pr-12 text-sm text-gray-800 outline-none transition focus:border-black focus:ring-2 focus:ring-black/10"
               />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-black"
+                  aria-label="Clear search"
+                >
+                  ×
+                </button>
+              )}
             </div>
           </div>
           <button
@@ -56,7 +66,7 @@ export default function ProductGallery({
         </div>
       </div>
 
-      <section id="all-products-section" className="bg-white py-16">
+      <section id="all-products-section" className="bg-white py-10 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-10">
             <div>

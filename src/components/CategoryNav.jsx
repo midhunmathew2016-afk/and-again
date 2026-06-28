@@ -1,7 +1,7 @@
 export default function CategoryNav({ categories, selectedCategory, onSelect }) {
   return (
-    <div className="bg-white sticky top-24 z-30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="sticky top-[4.5rem] z-30 hidden bg-white md:block">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-center justify-center gap-3 overflow-x-auto py-3">
           {categories.map((category) => (
             <button
