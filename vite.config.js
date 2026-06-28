@@ -3,5 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  assetsInclude: ['**/*.PNG', '**/*.JPG', '**/*.JPEG']
+  assetsInclude: ['**/*.PNG', '**/*.JPG', '**/*.JPEG'],
+  build: {
+    outDir: 'docs'
+  }
 })
