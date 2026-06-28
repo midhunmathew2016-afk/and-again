@@ -7,6 +7,8 @@ import ProductDetail from './components/ProductDetail'
 import CartPage from './components/CartPage'
 import CheckoutPage from './components/CheckoutPage'
 import ConfirmationPage from './components/ConfirmationPage'
+import ContactPage from './components/ContactPage'
+import WishlistPage from './components/WishlistPage'
 
 import img01 from './assets/01.png'
 import img02 from './assets/AVSDE5483.JPG'
@@ -171,6 +173,14 @@ export default function App() {
   const [route, setRoute] = useState(() => window.location.hash.replace('#', '') || '/')
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [cart, setCart] = useState([])
+  const [wishlist, setWishlist] = useState(() => {
+    try {
+      const raw = window.localStorage.getItem('wishlist')
+      return raw ? JSON.parse(raw) : []
+    } catch {
+      return []
+    }
+  })
   const [checkoutData, setCheckoutData] = useState({
     name: '',
     email: '',
@@ -190,6 +200,10 @@ export default function App() {
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('wishlist', JSON.stringify(wishlist))
+  }, [wishlist])
 
   const navigate = (path) => {
     window.location.hash = path
@@ -221,10 +235,14 @@ export default function App() {
   }, [selectedCategory])
 
   const filteredProducts = useMemo(() => {
-    const query = searchQuery.toLowerCase()
-    return products.filter((product) =>
-      product.title.toLowerCase().includes(query) || product.description.toLowerCase().includes(query)
-    )
+    const query = searchQuery.trim().toLowerCase()
+    if (!query) return products
+    return products.filter((product) => {
+      const haystack = [product.title, product.description, product.category, product.vendor]
+        .join(' ')
+        .toLowerCase()
+      return haystack.includes(query)
+    })
   }, [searchQuery])
 
   const cartQuantity = cart.reduce((total, item) => total + item.quantity, 0)
@@ -257,6 +275,25 @@ export default function App() {
   const handleBuyNow = (product) => {
     addToCart(product)
     navigate('/checkout')
+  }
+
+  const handleToggleWishlist = (product) => {
+    setWishlist((current) => {
+      const exists = current.some((item) => item.title === product.title)
+      if (exists) {
+        return current.filter((item) => item.title !== product.title)
+      }
+      return [...current, product]
+    })
+  }
+
+  const isInWishlist = (product) => wishlist.some((item) => item.title === product.title)
+
+  const handleHeaderSearch = (query) => {
+    setSearchQuery(query)
+    setSelectedCategory('All products')
+    navigate('/')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const scrollToCategory = (category) => {
@@ -295,7 +332,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
-      <Header cartQuantity={cartQuantity} onCartClick={() => navigate('/cart')} />
+      <Header
+        cartQuantity={cartQuantity}
+        wishlistCount={wishlist.length}
+        onCartClick={() => navigate('/cart')}
+        onSearchClick={handleHeaderSearch}
+        onContactClick={() => navigate('/contact')}
+        onWishlistClick={() => navigate('/wishlist')}
+      />
 
       {activeRoute === '/' && (
         <CategoryNav
@@ -309,28 +353,32 @@ export default function App() {
       )}
 
       <main>
-        <Hero />
-
-        <section className="bg-white py-16">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-serif tracking-tight">Our story</h2>
-            <p className="mt-5 text-base leading-8 text-gray-600">
-              AND AGAIN began with a love for objects that feel both familiar and refined. We create purposeful, modern interiors with thoughtful craftsmanship, timeless materials, and a soft approach to everyday luxury.
-            </p>
-          </div>
-        </section>
-
         {activeRoute === '/' && (
-          <ProductGallery
-            products={filteredProducts}
-            categories={categories}
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            onProductClick={handleProductClick}
-            onAddToCart={handleAddToCart}
-            onViewCart={() => navigate('/cart')}
-            cartQuantity={cartQuantity}
-          />
+          <>
+            <Hero />
+
+            <section className="bg-white py-16">
+              <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 className="text-3xl font-serif tracking-tight">Our story</h2>
+                <p className="mt-5 text-base leading-8 text-gray-600">
+                  AND AGAIN began with a love for objects that feel both familiar and refined. We create purposeful, modern interiors with thoughtful craftsmanship, timeless materials, and a soft approach to everyday luxury.
+                </p>
+              </div>
+            </section>
+
+            <ProductGallery
+              products={filteredProducts}
+              categories={categories}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              onProductClick={handleProductClick}
+              onAddToCart={handleAddToCart}
+              onViewCart={() => navigate('/cart')}
+              cartQuantity={cartQuantity}
+              onToggleWishlist={handleToggleWishlist}
+              isProductInWishlist={isInWishlist}
+            />
+          </>
         )}
 
         {activeRoute === '/product' && selectedProduct && (
@@ -377,7 +425,23 @@ export default function App() {
             onViewCart={() => navigate('/cart')}
           />
         )}
+
+        {activeRoute === '/contact' && (
+          <ContactPage onBack={() => navigate('/')} />
+        )}
+
+        {activeRoute === '/wishlist' && (
+          <WishlistPage
+            wishlist={wishlist}
+            onOpenProduct={handleProductClick}
+            onRemoveFromWishlist={handleToggleWishlist}
+            onContinueShopping={() => navigate('/')}
+            formatPrice={formatPrice}
+          />
+        )}
       </main>
     </div>
   )
 }
+
+

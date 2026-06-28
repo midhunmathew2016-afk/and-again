@@ -39,15 +39,8 @@ export default function Header({ cartQuantity, wishlistCount, onCartClick, onSea
               </div>
             </div>
 
-            {/* Desktop Navigation - Hidden on mobile */}
-            <nav className="hidden md:flex items-center gap-8 mx-auto">
-              <a href="#" className="text-gray-700 hover:text-black font-medium">Shop</a>
-              <a href="#" className="text-gray-700 hover:text-black font-medium">About us</a>
-              <a href="#" className="text-gray-700 hover:text-black font-medium">Contact</a>
-            </nav>
-
             {/* Right Side Icons */}
-            <div className="flex items-center gap-4 md:gap-6">
+            <div className="flex items-center gap-4 md:gap-6 md:ml-auto">
               {/* Search Icon with Search Bar */}
               <div className="relative">
                 <button
@@ -67,7 +60,7 @@ export default function Header({ cartQuantity, wishlistCount, onCartClick, onSea
                         placeholder="Search products..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                         className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black"
                         autoFocus
                       />
@@ -133,9 +126,9 @@ export default function Header({ cartQuantity, wishlistCount, onCartClick, onSea
           {menuOpen && (
             <div className="border-t border-gray-200 bg-white py-3 md:hidden">
               <div className="flex flex-col gap-2 px-2 text-sm text-gray-700">
-                <a href="#" className="rounded-lg px-3 py-2 hover:bg-gray-100">Shop</a>
-                <a href="#" className="rounded-lg px-3 py-2 hover:bg-gray-100">About us</a>
-                <a href="#" className="rounded-lg px-3 py-2 hover:bg-gray-100">Contact</a>
+                <button onClick={() => { window.location.hash = '/'; setMenuOpen(false) }} className="rounded-lg px-3 py-2 text-left hover:bg-gray-100">Home</button>
+                <button onClick={() => { onWishlistClick(); setMenuOpen(false) }} className="rounded-lg px-3 py-2 text-left hover:bg-gray-100">Wishlist</button>
+                <button onClick={() => { onContactClick(); setMenuOpen(false) }} className="rounded-lg px-3 py-2 text-left hover:bg-gray-100">Contact</button>
               </div>
             </div>
           )}
@@ -144,3 +137,4 @@ export default function Header({ cartQuantity, wishlistCount, onCartClick, onSea
     </header>
   )
 }
+

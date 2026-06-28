@@ -1,3 +1,4 @@
+
 import ProductCard from './ProductCard'
 
 const sectionId = (category) => category.toLowerCase().replace(/\s+/g, '-')
@@ -10,7 +11,9 @@ export default function ProductGallery({
   onProductClick,
   onAddToCart,
   onViewCart,
-  cartQuantity
+  cartQuantity,
+  onToggleWishlist,
+  isProductInWishlist
 }) {
   const categoryGroups = categories
     .filter((category) => category !== 'All products')
@@ -82,6 +85,8 @@ export default function ProductGallery({
                           formatPrice={(value) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value)}
                           onClick={onProductClick}
                           onAddToCart={onAddToCart}
+                          onAddToWishlist={onToggleWishlist}
+                          isInWishlist={isProductInWishlist(product)}
                         />
                       ))}
                     </div>
@@ -99,3 +104,4 @@ export default function ProductGallery({
     </section>
   )
 }
+
