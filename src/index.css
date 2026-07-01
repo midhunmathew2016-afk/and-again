@@ -12,8 +12,10 @@ html, body, #root {
 }
 
 /* Typography */
-body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial }
-.font-serif { font-family: 'Playfair Display', Georgia, serif }
+html, body { font-family: 'Everyday Sans UI', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; }
+.font-serif { font-family: 'Everyday Sans UI', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+
+button, input, textarea, select { font: inherit; }
 
 /* Cookie bar limits */
 .cookie-bar-hidden { display: none }

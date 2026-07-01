@@ -299,13 +299,21 @@ export default function App() {
   const scrollToCategory = (category) => {
     const id = category === 'All products' ? 'all-products-section' : category.toLowerCase().replace(/\s+/g, '-')
     const target = document.getElementById(id)
-    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return
+    }
+
+    window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 150)
   }
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category)
     navigate('/')
-    window.setTimeout(() => scrollToCategory(category), 120)
+    window.setTimeout(() => scrollToCategory(category), 200)
   }
 
   const handleLogoClick = () => {

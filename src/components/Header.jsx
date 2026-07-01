@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import logoSrc from '../assets/ChatGPT Image May 20, 2026 at 12_34_26 PM.png'
+import logoSrc from '../assets/Logo bg removed.png'
 
 export default function Header({
   cartQuantity,
@@ -28,11 +28,12 @@ export default function Header({
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
+    <header className="sticky top-0 z-50 bg-white shadow-sm overflow-visible">
       <div className="border-b border-gray-200">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3 sm:py-4">
-            <div className="flex md:hidden">
+        <div>
+          {/* Nav row: fixed height so CategoryNav can stick just below */}
+          <div className="relative h-16 md:h-20 flex items-center justify-between w-full px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center md:hidden">
               <button
                 className="text-gray-700 hover:text-black"
                 onClick={() => setMenuOpen(!menuOpen)}
@@ -44,18 +45,32 @@ export default function Header({
               </button>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 flex justify-center">
+            {/* Left Navigation - HOME only (hidden on mobile) */}
+            <div className="hidden md:flex items-center gap-8 justify-start leading-6">
               <button
-                type="button"
                 onClick={onLogoClick}
-                className="pointer-events-auto flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-transparent transition hover:scale-[1.02] sm:h-16 sm:w-16 md:h-20 md:w-20"
-                aria-label="Go to home"
+                className="text-sm font-normal leading-6 tracking-[0.32em] uppercase text-gray-700 hover:text-black transition border-b-2 border-transparent hover:border-black pb-1"
               >
-                <img src={logoSrc} alt="and again logo" className="h-10 w-10 rounded-full object-contain sm:h-12 sm:w-12 md:h-16 md:w-16" />
+                HOME
+              </button>
+              <button
+                onClick={onContactClick}
+                className="text-sm font-normal leading-6 tracking-[0.32em] uppercase text-gray-700 hover:text-black transition border-b-2 border-transparent hover:border-black pb-1"
+              >
+                CONTACT
               </button>
             </div>
 
-            <div className="flex items-center gap-3 sm:gap-5 md:ml-auto">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-50">
+              <button type="button" onClick={onLogoClick} aria-label="Go to home">
+                <img src={logoSrc} alt="and again logo" className="h-24 md:h-36 lg:h-44 w-auto max-w-[14rem] object-contain bg-transparent" />
+              </button>
+            </div>
+
+            {/* Right side: CONTACT (desktop) then icons */}
+            <div className="flex items-center justify-end gap-3 sm:gap-4 md:gap-5">
+
+              {/* Search - Hidden on mobile */}
               <div
                 className="relative hidden h-10 items-center md:flex"
                 onMouseEnter={() => setSearchOpen(true)}
@@ -68,11 +83,11 @@ export default function Header({
                 <div className={`flex h-full items-center rounded-full bg-white px-2 shadow-sm transition-all duration-200 min-h-[40px] ${searchOpen ? 'w-[18rem]' : 'w-10'}`}>
                   {!searchOpen ? (
                     <button
-                      className="flex h-full w-full items-center justify-center text-gray-700"
+                      className="flex h-full w-full items-center justify-center text-gray-700 hover:text-black"
                       onClick={() => setSearchOpen(true)}
                       aria-label="Open search"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6.5-6.5M11 5a6 6 0 100 12 6 6 0 000-12z" />
                       </svg>
                     </button>
@@ -98,23 +113,32 @@ export default function Header({
                 </div>
               </div>
 
+              {/* Cart Icon */}
               <button
-                onClick={onContactClick}
-                className="text-gray-700 hover:text-black"
-                aria-label="Contact us"
+                type="button"
+                onClick={onCartClick}
+                className="relative text-gray-700 hover:text-black transition"
+                aria-label="Shopping cart"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 18a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+                  <path d="M5 4h2l2.4 12.8a2 2 0 001.98 1.61H18a2 2 0 002-1.75L22 6H7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
+                {cartQuantity > 0 && (
+                  <span className="absolute -right-2 -top-2 inline-flex min-w-[1.25rem] items-center justify-center rounded-full border border-gray-200 bg-white px-1.5 py-0.5 text-[0.65rem] font-semibold text-gray-900">
+                    {cartQuantity}
+                  </span>
+                )}
               </button>
 
+              {/* Wishlist Icon */}
               <button
                 onClick={onWishlistClick}
-                className="relative text-gray-700 hover:text-black"
+                className="relative text-gray-700 hover:text-black transition"
                 aria-label="Wishlist"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.682l-7.682-7.682a4.5 4.5 0 010-6.364z" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
                 {wishlistCount > 0 && (
                   <span className="absolute -right-2 -top-2 inline-flex min-w-[1.25rem] items-center justify-center rounded-full border border-gray-200 bg-white px-1.5 py-0.5 text-[0.65rem] font-semibold text-gray-900">
@@ -123,44 +147,47 @@ export default function Header({
                 )}
               </button>
 
+              {/* Search Icon - Mobile */}
               <button
-                type="button"
-                onClick={onCartClick}
-                className="relative text-gray-700 hover:text-black"
-                aria-label="Shopping cart"
+                className="md:hidden text-gray-700 hover:text-black transition"
+                onClick={() => setSearchOpen(!searchOpen)}
+                aria-label="Search"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 13l-1 7h13l-1-7M10 21a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2z" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6.5-6.5M11 5a6 6 0 100 12 6 6 0 000-12z" />
                 </svg>
-                {cartQuantity > 0 && (
-                  <span className="absolute -right-2 -top-2 inline-flex min-w-[1.25rem] items-center justify-center rounded-full border border-gray-200 bg-white px-1.5 py-0.5 text-[0.65rem] font-semibold text-gray-900">
-                    {cartQuantity}
-                  </span>
-                )}
+              </button>
+            </div>
+
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-50">
+              <button type="button" onClick={onLogoClick} aria-label="Go to home">
+                <img src={logoSrc} alt="and again logo" className="h-24 md:h-36 lg:h-44 w-auto max-w-[14rem] object-contain bg-transparent" />
               </button>
             </div>
           </div>
 
+          {/* Mobile Search */}
+          {searchOpen && (
+            <div className="md:hidden py-2 border-t border-gray-100">
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm outline-none"
+                autoFocus
+              />
+            </div>
+          )}
+
+          {/* Mobile Menu */}
           {menuOpen && (
-            <div className="bg-white py-2 md:hidden">
-              <div className="flex flex-col gap-1 px-2 text-sm text-gray-700">
-                <button onClick={() => { onLogoClick(); setMenuOpen(false) }} className="rounded-lg px-3 py-3 text-left transition hover:bg-gray-100">Home</button>
-                <p className="px-3 pt-3 pb-1">Shop</p>
-                {categories.filter((category) => category !== 'All products').map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => {
-                      onCategorySelect(category)
-                      setMenuOpen(false)
-                    }}
-                    className="rounded-lg px-6 py-3 text-left text-sm text-gray-600 transition hover:bg-gray-100"
-                  >
-                    {category}
-                  </button>
-                ))}
-                <button onClick={() => { onWishlistClick(); setMenuOpen(false) }} className="rounded-lg px-3 py-3 text-left transition hover:bg-gray-100">Wishlist</button>
-                <button onClick={() => { onContactClick(); setMenuOpen(false) }} className="rounded-lg px-3 py-3 text-left transition hover:bg-gray-100">Contact</button>
+            <div className="bg-white py-2 md:hidden border-t border-gray-100">
+              <div className="flex flex-col gap-1 px-2 text-sm">
+                <button onClick={() => { onLogoClick(); setMenuOpen(false) }} className="rounded-lg px-3 py-3 text-left text-xs tracking-widest text-gray-700 hover:bg-gray-100 transition font-medium">Home</button>
+                <button onClick={() => { onContactClick(); setMenuOpen(false) }} className="rounded-lg px-3 py-3 text-left text-xs tracking-widest text-gray-700 hover:bg-gray-100 transition font-medium">Contact</button>
+                <button onClick={() => { onWishlistClick(); setMenuOpen(false) }} className="rounded-lg px-3 py-3 text-left text-xs tracking-widest text-gray-700 hover:bg-gray-100 transition font-medium">Wishlist</button>
               </div>
             </div>
           )}

@@ -20,7 +20,7 @@ export default function WishlistPage({ wishlist, onOpenProduct, onRemoveFromWish
                     <img src={product.img} alt={product.title} className="h-full w-full rounded-xl object-cover" />
                   </div>
                   <div className="p-5">
-                    <p className="text-xs uppercase tracking-[0.16em] text-gray-500">{product.category}</p>
+                    <p className="text-xs tracking-[0.16em] text-gray-500">{product.category}</p>
                     <h3 className="mt-1 text-lg font-semibold text-gray-900">{product.title}</h3>
                     <p className="mt-2 text-sm font-semibold text-gray-900">{formatPrice(product.price)}</p>
                   </div>

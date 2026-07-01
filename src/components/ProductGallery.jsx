@@ -80,7 +80,7 @@ export default function ProductGallery({
               <section key={category} id={sectionId(category)} className="scroll-mt-28">
                 <div className="flex items-center justify-between border-b border-gray-200 pb-4">
                   <div>
-                    <h4 className="text-xl font-semibold uppercase tracking-[0.18em] text-gray-900">{category}</h4>
+                    <h4 className="text-xl font-serif font-normal text-gray-900">{category}</h4>
                     <p className="mt-2 text-sm text-gray-500">{items.length} item{items.length === 1 ? '' : 's'}</p>
                   </div>
                 </div>

@@ -158,15 +158,15 @@ export default function ProductDetail({ product, formatPrice, onAddToCart, onBuy
           </div>
           <div className="flex flex-col justify-between space-y-4">
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-gray-500">{product.category}</p>
+              <p className="text-sm tracking-[0.22em] text-gray-500">{product.category}</p>
               <h3 className="mt-1 text-3xl font-serif tracking-tight">{product.title}</h3>
-              <p className="mt-2 text-2xl font-semibold text-gray-900">{formatPrice(product.price)}</p>
+              <p className="mt-2 text-2xl font-semibold text-gray-900" style={{ letterSpacing: '1px' }}>{formatPrice(product.price)}</p>
             </div>
 
             <div className="space-y-2">
               <button
                 onClick={() => setExpandedSection(expandedSection === 'description' ? null : 'description')}
-                className="w-full flex items-center justify-between border-b border-gray-300 py-3 text-left text-sm font-semibold uppercase tracking-[0.08em] text-gray-900 hover:text-black"
+                className="w-full flex items-center justify-between border-b border-gray-300 py-3 text-left text-sm font-semibold tracking-[0.08em] text-gray-900 hover:text-black"
               >
                 <span>Description</span>
                 <svg className={`h-5 w-5 transition ${expandedSection === 'description' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,7 +180,7 @@ export default function ProductDetail({ product, formatPrice, onAddToCart, onBuy
               )}
               <button
                 onClick={() => setExpandedSection(expandedSection === 'materials' ? null : 'materials')}
-                className="w-full flex items-center justify-between border-b border-gray-300 py-4 text-left text-sm font-semibold uppercase tracking-[0.08em] text-gray-900 hover:text-black"
+                className="w-full flex items-center justify-between border-b border-gray-300 py-4 text-left text-sm font-semibold tracking-[0.08em] text-gray-900 hover:text-black"
               >
                 <span>Materials & Finishes</span>
                 <svg className={`h-5 w-5 transition ${expandedSection === 'materials' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -198,7 +198,7 @@ export default function ProductDetail({ product, formatPrice, onAddToCart, onBuy
 
               <button
                 onClick={() => setExpandedSection(expandedSection === 'type' ? null : 'type')}
-                className="w-full flex items-center justify-between border-b border-gray-300 py-4 text-left text-sm font-semibold uppercase tracking-[0.08em] text-gray-900 hover:text-black"
+                className="w-full flex items-center justify-between border-b border-gray-300 py-4 text-left text-sm font-semibold tracking-[0.08em] text-gray-900 hover:text-black"
               >
                 <span>Type</span>
                 <svg className={`h-5 w-5 transition ${expandedSection === 'type' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -215,7 +215,7 @@ export default function ProductDetail({ product, formatPrice, onAddToCart, onBuy
                 <>
                   <button
                     onClick={() => setExpandedSection(expandedSection === 'dimensions' ? null : 'dimensions')}
-                    className="w-full flex items-center justify-between border-b border-gray-300 py-4 text-left text-sm font-semibold uppercase tracking-[0.08em] text-gray-900 hover:text-black"
+                    className="w-full flex items-center justify-between border-b border-gray-300 py-4 text-left text-sm font-semibold tracking-[0.08em] text-gray-900 hover:text-black"
                   >
                     <span>Dimensions</span>
                     <svg className={`h-5 w-5 transition ${expandedSection === 'dimensions' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -232,7 +232,7 @@ export default function ProductDetail({ product, formatPrice, onAddToCart, onBuy
 
               <button
                 onClick={() => setExpandedSection(expandedSection === 'delivery' ? null : 'delivery')}
-                className="w-full flex items-center justify-between border-b border-gray-300 py-4 text-left text-sm font-semibold uppercase tracking-[0.08em] text-gray-900 hover:text-black"
+                className="w-full flex items-center justify-between border-b border-gray-300 py-4 text-left text-sm font-semibold tracking-[0.08em] text-gray-900 hover:text-black"
               >
                 <span>Delivery</span>
                 <svg className={`h-5 w-5 transition ${expandedSection === 'delivery' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,7 +241,7 @@ export default function ProductDetail({ product, formatPrice, onAddToCart, onBuy
               </button>
               {expandedSection === 'delivery' && (
                 <div className="py-3 text-sm text-gray-600">
-                  <p>For furniture order and delivery enquiries, please email us at hello@orientalliving.in, as all items are made to order, and shipping costs will vary according to the item and location.</p>
+                  <p>For furniture order and delivery enquiries, please email us at andagain.in@gmail.com, as all items are made to order, and shipping costs will vary according to the item and location.</p>
                 </div>
               )}
             </div>
@@ -266,7 +266,7 @@ export default function ProductDetail({ product, formatPrice, onAddToCart, onBuy
             <button
               type="button"
               onClick={onBack}
-              className="text-sm font-semibold uppercase tracking-[0.16em] text-gray-600 hover:text-black"
+              className="text-sm font-semibold tracking-[0.16em] text-gray-600 hover:text-black"
             >
               Back to products
             </button>
