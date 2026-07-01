@@ -207,7 +207,16 @@ export default function App() {
 
   const navigate = (path) => {
     window.location.hash = path
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    const scrollTarget = () => {
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        document.documentElement.scrollTop = 0
+        document.body.scrollTop = 0
+      }
+    }
+
+    requestAnimationFrame(scrollTarget)
+    window.setTimeout(scrollTarget, 80)
   }
 
   useEffect(() => {
