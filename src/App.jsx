@@ -207,6 +207,7 @@ export default function App() {
 
   const navigate = (path) => {
     window.location.hash = path
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   useEffect(() => {
@@ -264,6 +265,7 @@ export default function App() {
 
   const handleProductClick = (product) => {
     setSelectedProduct(product)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
     navigate('/product')
   }
 
@@ -383,7 +385,7 @@ export default function App() {
 
             <section className="bg-white py-16">
               <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 className="text-3xl font-serif tracking-tight">Our story</h2>
+                <h2 className="text-[1.5rem] md:text-3xl font-serif tracking-tight">Our story</h2>
                 <p className="mt-5 text-base leading-8 text-gray-600">
                   AND AGAIN began with a love for objects that feel both familiar and refined. We create purposeful, modern interiors with thoughtful craftsmanship, timeless materials, and a soft approach to everyday luxury.
                 </p>

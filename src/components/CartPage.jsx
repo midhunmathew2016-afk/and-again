@@ -13,7 +13,7 @@ export default function CartPage({
         <div className="flex flex-col gap-8 rounded-[2rem] border border-gray-200 bg-slate-50 p-8">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-2xl font-serif">Your cart</h3>
+              <h3 className="text-[1.5rem] md:text-2xl font-serif">Your cart</h3>
               <p className="mt-1 text-sm text-gray-500">Review the pieces you want to bring home.</p>
             </div>
             <div className="text-right text-sm text-gray-600">{cartQuantity} items</div>
@@ -68,7 +68,7 @@ export default function CartPage({
           <div className="flex flex-col gap-4 border-t border-gray-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm text-gray-500">Secure checkout with trusted payment processing.</p>
-              <p className="mt-1 text-2xl font-semibold text-gray-900">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(cartTotal)}</p>
+              <p className="mt-1 text-[1.5rem] md:text-2xl font-semibold text-gray-900">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(cartTotal)}</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <button

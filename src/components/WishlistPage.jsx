@@ -5,7 +5,7 @@ export default function WishlistPage({ wishlist, onOpenProduct, onRemoveFromWish
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-3xl font-serif text-gray-900">Your wishlist</h2>
+            <h2 className="text-[1.5rem] md:text-3xl font-serif text-gray-900">Your wishlist</h2>
             <p className="mt-2 text-sm text-gray-500">Saved pieces ready for your next decision.</p>
           </div>
           <p className="text-sm font-semibold text-gray-700">{wishlist.length} item{wishlist.length === 1 ? '' : 's'}</p>
@@ -21,7 +21,7 @@ export default function WishlistPage({ wishlist, onOpenProduct, onRemoveFromWish
                   </div>
                   <div className="p-5">
                     <p className="text-xs tracking-[0.16em] text-gray-500">{product.category}</p>
-                    <h3 className="mt-1 text-lg font-semibold text-gray-900">{product.title}</h3>
+                    <h3 className="mt-1 text-[1rem] md:text-lg font-semibold text-gray-900">{product.title}</h3>
                     <p className="mt-2 text-sm font-semibold text-gray-900">{formatPrice(product.price)}</p>
                   </div>
                 </button>

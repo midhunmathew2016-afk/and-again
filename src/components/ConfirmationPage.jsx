@@ -8,7 +8,7 @@ export default function ConfirmationPage({ checkoutData, onContinueShopping, onV
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-3xl font-serif">Order Confirmed</h3>
+          <h3 className="text-[1.5rem] md:text-3xl font-serif">Order Confirmed</h3>
           <p className="mt-4 text-gray-600">
             Thank you, {checkoutData.name || 'customer'}. Your order has been received and is being prepared for shipping.
           </p>

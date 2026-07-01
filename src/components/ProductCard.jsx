@@ -32,9 +32,9 @@ export default function ProductCard({ product, formatPrice, onClick, onAddToCart
           </div>
         </div>
         <div className="px-6 pb-6 pt-4">
-          <h4 className="text-xl">{product.title}</h4>
+          <h4 className="text-[1.125rem] md:text-xl">{product.title}</h4>
           <div className="mt-3">
-            <span className="text-lg text-gray-900">{formatPrice(product.price)}</span>
+            <span className="text-[1rem] md:text-lg text-gray-900">{formatPrice(product.price)}</span>
           </div>
         </div>
       </button>

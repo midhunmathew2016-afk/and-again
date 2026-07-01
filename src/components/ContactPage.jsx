@@ -4,7 +4,7 @@ export default function ContactPage({ onBack }) {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-[2rem] border border-gray-200 bg-slate-50 p-8 sm:p-10">
           <p className="text-sm tracking-[0.2em] text-gray-500">Contact details</p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-serif text-gray-900">Get in touch</h2>
+          <h2 className="mt-2 text-[1.5rem] md:text-3xl font-serif text-gray-900">Get in touch</h2>
           <p className="mt-4 text-gray-600">For product questions, order updates, and delivery support, contact us through the details below.</p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">

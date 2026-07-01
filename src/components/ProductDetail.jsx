@@ -159,8 +159,8 @@ export default function ProductDetail({ product, formatPrice, onAddToCart, onBuy
           <div className="flex flex-col justify-between space-y-4">
             <div>
               <p className="text-sm tracking-[0.22em] text-gray-500">{product.category}</p>
-              <h3 className="mt-1 text-3xl font-serif tracking-tight">{product.title}</h3>
-              <p className="mt-2 text-2xl font-semibold text-gray-900" style={{ letterSpacing: '1px' }}>{formatPrice(product.price)}</p>
+              <h3 className="mt-1 text-[1.5rem] md:text-3xl font-serif tracking-tight">{product.title}</h3>
+              <p className="mt-2 text-[1.25rem] md:text-2xl font-semibold text-gray-900" style={{ letterSpacing: '1px' }}>{formatPrice(product.price)}</p>
             </div>
 
             <div className="space-y-2">

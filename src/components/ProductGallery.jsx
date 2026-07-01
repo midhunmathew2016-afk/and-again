@@ -70,7 +70,7 @@ export default function ProductGallery({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-10">
             <div>
-              <h3 className="text-2xl font-serif">Products</h3>
+              <h3 className="text-[1.5rem] md:text-2xl font-serif">Products</h3>
               <p className="mt-2 text-sm text-gray-500">Showing {products.length} products</p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function ProductGallery({
               <section key={category} id={sectionId(category)} className="scroll-mt-28">
                 <div className="flex items-center justify-between border-b border-gray-200 pb-4">
                   <div>
-                    <h4 className="text-xl font-serif font-normal text-gray-900">{category}</h4>
+                    <h4 className="text-[1.125rem] md:text-xl font-serif font-normal text-gray-900">{category}</h4>
                     <p className="mt-2 text-sm text-gray-500">{items.length} item{items.length === 1 ? '' : 's'}</p>
                   </div>
                 </div>

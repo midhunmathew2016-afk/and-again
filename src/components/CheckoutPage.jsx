@@ -5,7 +5,7 @@ export default function CheckoutPage({ cartQuantity, cartTotal, onBack }) {
         <div className="rounded-[2rem] border border-gray-200 bg-slate-50 p-6 sm:p-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h3 className="text-2xl font-serif">Contact for your order</h3>
+              <h3 className="text-[1.5rem] md:text-2xl font-serif">Contact for your order</h3>
               <p className="mt-2 text-sm text-gray-500">There is no payment step on this storefront. For any order or delivery query, reach out directly through the details below.</p>
             </div>
             <div className="rounded-full bg-white px-5 py-3 text-sm tracking-[0.18em] text-gray-700">
@@ -15,7 +15,7 @@ export default function CheckoutPage({ cartQuantity, cartTotal, onBack }) {
 
           <div className="mt-8 rounded-[1.5rem] border border-gray-200 bg-white p-6 sm:p-8">
             <p className="text-sm tracking-[0.2em] text-gray-500">Contact details</p>
-            <h4 className="mt-2 text-2xl font-serif text-gray-900">We’re here to help</h4>
+            <h4 className="mt-2 text-[1.5rem] md:text-2xl font-serif text-gray-900">We’re here to help</h4>
             <p className="mt-3 text-sm leading-7 text-gray-600">Please contact us for requests, purchase support, or delivery updates.</p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -27,9 +27,9 @@ export default function CheckoutPage({ cartQuantity, cartTotal, onBack }) {
                 <p className="text-xs tracking-[0.15em] text-gray-500">Phone</p>
                 <p className="mt-2 text-lg font-semibold text-gray-900">+91 90486 10091</p>
               </a>
-              <a href="https://instagram.com/andahgain.in" target="_blank" rel="noreferrer" className="rounded-2xl border border-gray-200 bg-slate-50 p-5 transition hover:border-black hover:bg-white">
+              <a href="https://instagram.com/andagain.in" target="_blank" rel="noreferrer" className="rounded-2xl border border-gray-200 bg-slate-50 p-5 transition hover:border-black hover:bg-white">
                 <p className="text-xs tracking-[0.15em] text-gray-500">Instagram</p>
-                <p className="mt-2 text-lg font-semibold text-gray-900">@andahgain.in</p>
+                <p className="mt-2 text-lg font-semibold text-gray-900">@andagain.in</p>
               </a>
             </div>
           </div>
