@@ -32,7 +32,7 @@ export default function Header({
       <div className="border-b border-gray-200">
         <div>
           {/* Nav row: fixed height so CategoryNav can stick just below */}
-          <div className="relative h-16 md:h-20 flex items-center justify-between w-full px-4 sm:px-6 lg:px-8">
+          <div className="relative h-20 md:h-28 flex items-center justify-between w-full px-4 sm:px-6 lg:px-8">
             <div className="flex items-center md:hidden">
               <button
                 className="text-gray-700 hover:text-black"
@@ -63,7 +63,7 @@ export default function Header({
 
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-50">
               <button type="button" onClick={onLogoClick} aria-label="Go to home">
-                <img src={logoSrc} alt="and again logo" className="h-24 md:h-36 lg:h-44 w-auto max-w-[14rem] object-contain bg-transparent" />
+              <img src={logoSrc} alt="and again logo" className="h-32 md:h-48 lg:h-56 w-auto max-w-[18rem] object-contain bg-transparent" />
               </button>
             </div>
 
@@ -161,7 +161,7 @@ export default function Header({
 
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-50">
               <button type="button" onClick={onLogoClick} aria-label="Go to home">
-                <img src={logoSrc} alt="and again logo" className="h-24 md:h-36 lg:h-44 w-auto max-w-[14rem] object-contain bg-transparent" />
+                <img src={logoSrc} alt="and again logo" className="h-32 md:h-48 lg:h-56 w-auto max-w-[18rem] object-contain bg-transparent" />
               </button>
             </div>
           </div>
