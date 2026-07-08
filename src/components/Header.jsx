@@ -157,7 +157,7 @@ export default function Header({
 
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-50">
               <button type="button" onClick={onLogoClick} aria-label="Go to home">
-                <img src={logoSrc} alt="and again logo" className="h-10 md:h-10 lg:h-24 w-auto max-w-[18rem] object-contain bg-transparent" />
+                <img src={logoSrc} alt="and again logo" className="h-14 md:h-10 lg:h-24 w-auto max-w-[18rem] object-contain bg-transparent" />
               </button>
             </div>
           </div>
