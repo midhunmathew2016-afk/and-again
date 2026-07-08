@@ -396,7 +396,7 @@ export default function App() {
               <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 className="text-[1.5rem] md:text-3xl font-serif tracking-tight">Our story</h2>
                 <p className="mt-5 text-base leading-8 text-gray-600">
-                  AND AGAIN began with a love for objects that feel both familiar and refined. We create purposeful, modern interiors with thoughtful craftsmanship, timeless materials, and a soft approach to everyday luxury.
+                  Every vintage piece carries memories. We collect, curate, and restore furniture and decor from across India, including pieces shared by people who believe they deserve another home. It’s our way of preserving timeless design while embracing a more sustainable future.
                 </p>
               </div>
             </section>
