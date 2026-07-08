@@ -394,7 +394,7 @@ export default function App() {
 
             <section className="bg-white py-16">
               <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 className="text-[1.5rem] md:text-3xl font-serif tracking-tight">Our story</h2>
+                <h2 className="text-[1.5rem] md:text-3xl font-serif tracking-tight">What We Do</h2>
                 <p className="mt-5 text-base leading-8 text-gray-600">
                   Every vintage piece carries memories. We collect, curate, and restore furniture and decor from across India, including pieces shared by people who believe they deserve another home. It’s our way of preserving timeless design while embracing a more sustainable future.
                 </p>
